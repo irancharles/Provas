@@ -45,6 +45,7 @@ public class FazerProva {
 		frame.setBounds(100, 100, 640, 480);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		JLabel lblFazerProva = new JLabel("Fazer Prova");
 		lblFazerProva.setFont(new Font("Tahoma", Font.PLAIN, 16));

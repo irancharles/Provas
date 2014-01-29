@@ -47,6 +47,7 @@ public class TelaInicial {
 		frame.setBounds(100, 100, 640, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		JLabel lblSistemaDeProvas = new JLabel("Sistema de provas");
 		lblSistemaDeProvas.setFont(new Font("Algerian", Font.PLAIN, 16));

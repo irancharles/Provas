@@ -5,11 +5,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+
 import javax.swing.JTextPane;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Color;
+
 import javax.swing.JButton;
+
+import Classes.Questoes;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class InserirQuestoes {
 
@@ -46,6 +58,7 @@ public class InserirQuestoes {
 		frame.setBounds(100, 100, 640, 480);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		JLabel lblInserirQuestes = new JLabel("Inserir quest\u00F5es");
 		lblInserirQuestes.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -57,16 +70,16 @@ public class InserirQuestoes {
 		frame.getContentPane().add(lblSerie);
 		
 		JLabel lblAssunto = new JLabel("Assunto");
-		lblAssunto.setBounds(10, 79, 46, 14);
+		lblAssunto.setBounds(10, 79, 57, 14);
 		frame.getContentPane().add(lblAssunto);
 		
 		Object[] Series = {5,6,7,8,9};
-		JComboBox comboBox = new JComboBox(Series);
+		final JComboBox comboBox = new JComboBox(Series);
 		comboBox.setBounds(66, 45, 57, 17);
 		frame.getContentPane().add(comboBox);
 		
 		Object[] Assunto = {"Lugar espaço e paisagem","Como se orientar na superfície terrestre","Os mapas","Escala gráfica e escala numérica","Gráficos","Movimentos da Terra","A litosfera","O relevo e suas formas","Formação e transformação do relevo (agentes externos e internos)","Recursos naturais","Águas continentais","Águas oceânicas","A atmosfera e seus fenômenos","Mudanças do tempo"};
-		JComboBox comboBox_1 = new JComboBox(Assunto);
+		final JComboBox comboBox_1 = new JComboBox(Assunto);
 		comboBox_1.setBounds(66, 76, 548, 20);
 		frame.getContentPane().add(comboBox_1);
 		
@@ -78,7 +91,7 @@ public class InserirQuestoes {
 		lblResposta.setBounds(10, 315, 57, 14);
 		frame.getContentPane().add(lblResposta);
 		
-		JTextPane textPane = new JTextPane();
+		final JTextPane textPane = new JTextPane();
 		textPane.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, null, null));
 		textPane.setBounds(66, 124, 548, 180);
 		frame.getContentPane().add(textPane);
@@ -89,6 +102,22 @@ public class InserirQuestoes {
 		frame.getContentPane().add(textPane_1);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Questoes questoes = new Questoes();
+				questoes.setSerie((Integer)comboBox.getSelectedItem());
+				questoes.setAssunto((String)comboBox_1.getSelectedItem());
+				questoes.setQuestao(textPane.getText());
+				
+				JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso"); 
+			}
+		});
+		btnAdicionar.setActionCommand("");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnAdicionar.setBounds(267, 418, 89, 23);
 		frame.getContentPane().add(btnAdicionar);
 	}
